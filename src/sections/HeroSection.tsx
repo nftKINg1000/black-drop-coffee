@@ -29,7 +29,7 @@ export default function HeroSection() {
            initial={{ opacity: 0, y: 150 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
-           style={{ blur }}
+           style={{ filter: blur }}
            className="absolute inset-0 z-0 mask-scrolly"
         >
           <motion.div 
