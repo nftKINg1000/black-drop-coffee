@@ -21,9 +21,9 @@ export default function BookingSection() {
         
         {/* Left: Text & Info */}
         <div className={language === 'ar' ? 'order-last text-right' : 'text-left'}>
-           <span className="text-[10px] tracking-[0.8em] uppercase opacity-40 mb-8 block">Event Services</span>
-           <h2 className="text-6xl font-bold tracking-tighter leading-none mb-8">{t("bookingTitle")}</h2>
-           <p className="text-xl text-black/60 mb-12 max-w-md">{t("bookingDesc")}</p>
+           <span className="text-[10px] tracking-[0.8em] uppercase opacity-40 mb-4 md:mb-8 block">Event Services</span>
+           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter leading-none mb-6 md:mb-8">{t("bookingTitle")}</h2>
+           <p className="text-base md:text-xl text-black/60 mb-8 md:mb-12 max-w-md">{t("bookingDesc")}</p>
            
            <div className={`flex flex-col gap-6 ${language === 'ar' ? 'items-end' : 'items-start'}`}>
               <div className="flex items-center gap-4 text-sm font-semibold tracking-widest text-black/80">

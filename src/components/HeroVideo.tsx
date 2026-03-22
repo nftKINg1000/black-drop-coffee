@@ -4,28 +4,21 @@ import React from "react";
 
 export default function HeroVideo() {
   return (
-    <div className="relative w-full h-full overflow-hidden rounded-[40px] shadow-4xl bg-black">
-      {/* 
-        This is your cinematic video player. 
-        Please place your video file at: /public/antigravity_assets/hero_video.mp4
-      */}
+    <div className="relative w-full h-full overflow-hidden rounded-[40px] shadow-2xl bg-white border border-black/5">
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="w-full h-full object-cover opacity-100 scale-[1.07]"
+        className="w-full h-full object-cover scale-[1.05] brightness-[1.05] contrast-[1.05]"
       >
         <source src="/antigravity_assets/hero_video.mp4" type="video/mp4" />
         <img 
           src="/antigravity_assets/hero.png" 
           alt="Black Drop Coffee Hero Backup"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover grayscale opacity-20"
         />
       </video>
-      
-      {/* Cinematic Shadow Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
     </div>
   );
 }

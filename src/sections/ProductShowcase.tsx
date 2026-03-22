@@ -36,18 +36,18 @@ export default function ProductShowcase() {
         {/* Product Card Container */}
         <motion.div 
           style={{ x, rotate, scale }}
-          className="relative w-full max-w-6xl aspect-video bg-white rounded-[80px] shadow-4xl overflow-hidden flex flex-col items-center justify-center p-12"
+          className="relative w-full max-w-6xl aspect-[4/5] md:aspect-video bg-white rounded-[40px] md:rounded-[80px] shadow-4xl overflow-hidden flex flex-col items-center justify-center p-6 md:p-12"
         >
           {/* Subtle Grid Pattern Background */}
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')] opacity-10" />
           
-          <ModelWrapper className="w-[500px] h-[700px] z-20">
+          <ModelWrapper className="w-full max-w-[300px] md:w-[500px] h-[400px] md:h-[700px] z-20">
             {/* Featured Product Bag Asset */}
             <div className="relative w-full h-full group preserve-3d">
                <img 
                  src="/antigravity_assets/product.png" 
                  alt="Black Drop Coffee Bag"
-                 className="w-full h-full object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.3)] transition-transform duration-500 pointer-events-none"
+                 className="w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.2)] md:drop-shadow-[0_40px_80px_rgba(0,0,0,0.3)] transition-transform duration-500 pointer-events-none"
                />
                
                {/* Dynamic Shine Overlay */}
@@ -56,14 +56,14 @@ export default function ProductShowcase() {
           </ModelWrapper>
 
           {/* Bilingual Information & CTA Overlay */}
-          <div className={`absolute bottom-16 inset-x-16 flex justify-between items-end z-30 ${language === 'ar' ? 'flex-row-reverse' : 'flex-row'}`}>
-            <div className={`max-w-md ${language === 'ar' ? 'text-right' : 'text-left'}`}>
-              <span className="text-[12px] tracking-[0.6em] uppercase opacity-40 mb-4 block">{t("productTitle")}</span>
-              <h3 className="text-5xl font-bold tracking-tighter mt-2 leading-tight">{t("productDesc")}</h3>
+          <div className={`absolute bottom-8 md:bottom-16 inset-x-6 md:inset-x-16 flex flex-col md:flex-row justify-between items-center md:items-end gap-8 z-30 ${language === 'ar' ? 'md:flex-row-reverse' : ''}`}>
+            <div className={`max-w-md ${language === 'ar' ? 'text-center md:text-right' : 'text-center md:text-left'}`}>
+              <span className="text-[10px] md:text-[12px] tracking-[0.6em] uppercase opacity-40 mb-2 md:mb-4 block">{t("productTitle")}</span>
+              <h3 className="text-2xl md:text-5xl font-bold tracking-tighter mt-1 md:mt-2 leading-tight">{t("productDesc")}</h3>
             </div>
             
-            <button className="group flex items-center gap-4 bg-black text-white px-12 py-8 rounded-full text-base font-bold tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
-              <ShoppingCart className="w-6 h-6" />
+            <button className="group flex items-center gap-4 bg-black text-white px-8 md:px-12 py-4 md:py-8 rounded-full text-sm md:text-base font-bold tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
+              <ShoppingCart className="w-5 h-5 md:w-6 md:h-6" />
               {t("addToCart")}
             </button>
           </div>
