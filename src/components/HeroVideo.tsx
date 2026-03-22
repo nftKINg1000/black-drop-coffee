@@ -14,9 +14,9 @@ export default function HeroVideo() {
         loop
         muted
         playsInline
-        className="w-full h-full object-cover opacity-100 scale-105"
+        className="w-full h-full object-cover opacity-100 scale-[1.07]"
       >
-        <source src="/antigravity_assets/WhatsApp Video 2026-03-22 at 10.46.12.mp4" type="video/mp4" />
+        <source src="/antigravity_assets/hero_video.mp4" type="video/mp4" />
         <img 
           src="/antigravity_assets/hero.png" 
           alt="Black Drop Coffee Hero Backup"
