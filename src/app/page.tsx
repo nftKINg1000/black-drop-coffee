@@ -4,10 +4,24 @@ import ProductShowcase from "@/sections/ProductShowcase";
 import IngredientSection from "@/sections/IngredientSection";
 import BookingSection from "@/sections/BookingSection";
 import Navigation from "@/components/Navigation";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 export default function Home() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
     <main className="relative min-h-screen bg-white">
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-black origin-left z-[10000]"
+        style={{ scaleX }}
+      />
+      
       {/* Persistent Navigation */}
       <Navigation />
       
