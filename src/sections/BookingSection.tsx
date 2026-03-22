@@ -82,8 +82,5 @@ export default function BookingSection() {
 
       </div>
     </div>
-
-      </div>
-    </div>
   );
 }
