@@ -1,74 +1,98 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
-import ModelWrapper from "@/components/ModelWrapper";
+
+const PRODUCTS = [
+  {
+    id: 1,
+    name: "Colombia La Maria",
+    desc: "Colombia with lychee notes. Soft balance. Clean taste.",
+    descAr: "كولومبيا بنكهات ليتشي. توازن ناعم. مذاق نظيف.",
+    image: "/antigravity_assets/product.png",
+  },
+  {
+    id: 2,
+    name: "Ethiopia Yirgacheffe",
+    desc: "Jasmine aroma. Bergamot notes. Bright acidity.",
+    descAr: "رائحة الياسمين. نكهات البرغموت. حموضة مشرقة.",
+    image: "/antigravity_assets/product.png",
+  }
+];
 
 export default function ProductShowcase() {
   const { t, language } = useLanguage();
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
+  const [index, setIndex] = useState(0);
 
-  const x = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [10, -10]);
-  const scale = useTransform(scrollYProgress, [0.3, 0.5, 0.7], [0.8, 1.1, 0.8]);
+  const next = () => setIndex((prev) => (prev + 1) % PRODUCTS.length);
+  const prev = () => setIndex((prev) => (prev - 1 + PRODUCTS.length) % PRODUCTS.length);
 
   return (
-    <div ref={containerRef} className="relative h-[250vh] bg-white overflow-hidden border-t border-black/5">
-      <div className="sticky top-0 w-full h-screen flex items-center justify-center p-8">
+    <div className="relative h-screen bg-white overflow-hidden flex flex-col items-center justify-center p-8">
+      
+      {/* Product Image & UI */}
+      <div className="relative w-full max-w-4xl aspect-square flex items-center justify-center">
         
-        {/* Navigation Arrows */}
-        <div className="absolute inset-x-8 top-1/2 -translate-y-1/2 flex justify-between items-center z-30 pointer-events-none">
-          <button className="w-16 h-16 rounded-full bg-white/50 backdrop-blur border border-black/10 flex items-center justify-center pointer-events-auto hover:bg-black hover:text-white transition-all shadow-xl">
-            <ChevronLeft />
-          </button>
-          <button className="w-16 h-16 rounded-full bg-white/50 backdrop-blur border border-black/10 flex items-center justify-center pointer-events-auto hover:bg-black hover:text-white transition-all shadow-xl">
-            <ChevronRight />
-          </button>
+        {/* Navigation Arrows - Circular Buttons as in Screenshot */}
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between items-center z-30 pointer-events-none md:px-0 px-4">
+           <button 
+             onClick={prev}
+             className="w-16 h-16 rounded-full bg-white border border-black/10 flex items-center justify-center pointer-events-auto hover:bg-black/5 active:scale-95 transition-all shadow-lg"
+           >
+             <ChevronLeft className="w-6 h-6" />
+           </button>
+           <button 
+             onClick={next}
+             className="w-16 h-16 rounded-full bg-white border border-black/10 flex items-center justify-center pointer-events-auto hover:bg-black/5 active:scale-95 transition-all shadow-lg"
+           >
+             <ChevronRight className="w-6 h-6" />
+           </button>
         </div>
 
-        {/* Product Card Container */}
-        <motion.div 
-          style={{ x, rotate, scale }}
-          className="relative w-full max-w-6xl aspect-[4/5] md:aspect-video bg-white rounded-[40px] md:rounded-[80px] shadow-4xl overflow-hidden flex flex-col items-center justify-center p-6 md:p-12"
-        >
-          {/* Subtle Grid Pattern Background */}
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')] opacity-10" />
-          
-          <ModelWrapper className="w-full max-w-[300px] md:w-[500px] h-[400px] md:h-[700px] z-20">
-            {/* Featured Product Bag Asset */}
-            <div className="relative w-full h-full group preserve-3d">
-               <img 
-                 src="/antigravity_assets/product.png" 
-                 alt="Black Drop Coffee Bag"
-                 className="w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.2)] md:drop-shadow-[0_40px_80px_rgba(0,0,0,0.3)] transition-transform duration-500 pointer-events-none"
-               />
-               
-               {/* Dynamic Shine Overlay */}
-               <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-3xl" />
-            </div>
-          </ModelWrapper>
-
-          {/* Bilingual Information & CTA Overlay */}
-          <div className={`absolute bottom-8 md:bottom-16 inset-x-6 md:inset-x-16 flex flex-col md:flex-row justify-between items-center md:items-end gap-8 z-30 ${language === 'ar' ? 'md:flex-row-reverse' : ''}`}>
-            <div className={`max-w-md ${language === 'ar' ? 'text-center md:text-right' : 'text-center md:text-left'}`}>
-              <span className="text-[10px] md:text-[12px] tracking-[0.6em] uppercase opacity-40 mb-2 md:mb-4 block">{t("productTitle")}</span>
-              <h3 className="text-2xl md:text-5xl font-bold tracking-tighter mt-1 md:mt-2 leading-tight">{t("productDesc")}</h3>
-            </div>
-            
-            <button className="group flex items-center gap-4 bg-black text-white px-8 md:px-12 py-4 md:py-8 rounded-full text-sm md:text-base font-bold tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
-              <ShoppingCart className="w-5 h-5 md:w-6 md:h-6" />
-              {t("addToCart")}
-            </button>
-          </div>
-        </motion.div>
+        {/* The Product Bag Case - Centered */}
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={index}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative w-[300px] sm:w-[500px] h-full flex flex-col items-center justify-center"
+          >
+             <img 
+               src={PRODUCTS[index].image} 
+               alt={PRODUCTS[index].name}
+               className="w-full h-full object-contain mb-8 drop-shadow-3xl"
+             />
+             
+             {/* Add to Cart Button - Centered below bag as in screenshot */}
+             <button className="flex items-center gap-3 bg-black text-white px-10 py-5 rounded-full text-base font-bold tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl z-40">
+                <ShoppingCart className="w-5 h-5" />
+                <span>Add to Cart</span>
+             </button>
+          </motion.div>
+        </AnimatePresence>
       </div>
+
+      {/* Persistent Info Footer Bar - Exact to Screenshot */}
+      <div className="absolute bottom-12 inset-x-12 flex justify-between items-end">
+         {/* English Info */}
+         <div className="max-w-xs text-left">
+            <h3 className="text-xl md:text-2xl font-serif leading-tight text-neutral-950/80">
+               {PRODUCTS[index].desc}
+            </h3>
+         </div>
+
+         {/* Arabic Info */}
+         <div className="max-w-xs text-right">
+            <h3 className="text-xl md:text-2xl font-serif leading-tight text-neutral-950/80">
+               {PRODUCTS[index].descAr}
+            </h3>
+         </div>
+      </div>
+
     </div>
   );
 }
