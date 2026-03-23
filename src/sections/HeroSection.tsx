@@ -14,73 +14,63 @@ export default function HeroSection() {
     offset: ["start start", "end end"],
   });
 
-  // Balanced cinematic easing for the video alignment
-  const scale = useTransform(scrollYProgress, [0, 0.4, 0.8], [1, 1.15, 1]);
-  const yOffset = useTransform(scrollYProgress, [0.7, 1], [0, -300]);
+  // PROFESSIONAL CAMPAIGN MOTION: IMMERSIVE BUT OPEN
+  const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1.2]);
   const opacity = useTransform(scrollYProgress, [0.85, 1], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   return (
-    <div ref={containerRef} className="scrolly-section bg-white h-[300vh]">
-      <div className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden">
+    <section ref={containerRef} className="relative h-[200vh] bg-[#f7f6f3] z-20">
+      
+      {/* FINAL CAMPAIGN VIEWPORT (STICKY) */}
+      <div className="sticky top-0 w-full h-screen flex flex-col items-center justify-center overflow-hidden">
         
-        {/* CINEMATIC VIDEO BACKDROP - CRYSTAL CLEAR & IMMEDIATE */}
+        {/* REFINED SIDE SLABS (NARROWER & INTEGRATED) */}
+        <div className="absolute inset-y-0 left-0 w-[12vw] bg-[#000000] z-10 hidden lg:block" />
+        <div className="absolute inset-y-0 right-0 w-[12vw] bg-[#000000] z-10 hidden lg:block" />
+
+        {/* DOMINANT CENTRAL VISUAL (CUP) */}
         <motion.div 
-           initial={{ opacity: 0 }}
-           animate={{ opacity: 1 }}
-           transition={{ duration: 1 }}
-           className="absolute inset-0 z-0 mask-scrolly"
+           style={{ scale, opacity }}
+           className="relative w-full h-full flex items-center justify-center z-0 px-8"
         >
-          <motion.div 
-            style={{ scale, y: yOffset }}
-            className="w-full h-full p-0 md:p-12"
-          >
-            <HeroVideo />
-          </motion.div>
+          {/* Centered High-Authority Render */}
+          <div className="w-[90vw] h-[90vh] flex items-center justify-center">
+             <HeroVideo />
+          </div>
         </motion.div>
 
-        {/* Hero Title (Bold Cinematic Typography) */}
+        {/* RECOMPOSED EDITORIAL OVERLAY (NO COLLISION) */}
         <motion.div 
-          style={{ y: useTransform(scrollYProgress, [0, 0.5], [0, -120]), opacity }}
-          className="absolute text-center z-10 pointer-events-none w-full px-6"
+          style={{ y: textY, opacity }}
+          className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none text-center px-8"
         >
-          <motion.span 
-            initial={{ opacity: 0, letterSpacing: "1.5rem" }}
-            animate={{ opacity: 1, letterSpacing: "1em" }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="text-[8px] sm:text-[10px] tracking-[1em] uppercase block mb-4 md:mb-8 text-white font-semibold drop-shadow-md"
-          >
-            Specialty Coffee
-          </motion.span>
-          
-          <h2 
-            style={{ WebkitTextStroke: "1px rgba(0,0,0,0.15)" }}
-            className="text-5xl sm:text-7xl md:text-9xl font-bold tracking-tighter flex flex-wrap justify-center overflow-hidden text-white drop-shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
-          >
-            {t("heroSubtitle").split(" ").map((word, i) => (
-              <motion.span
-                key={i}
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ 
-                  duration: 1.2, 
-                  delay: 0.1 + i * 0.08, 
-                  ease: [0.22, 1, 0.36, 1] 
-                }}
-                className="inline-block mr-[0.2em] last:mr-0"
-              >
-                {word}
-              </motion.span>
-            ))}
-          </h2>
-          
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1.5, delay: 0.8 }}
-            className="w-16 md:w-24 h-px bg-white/60 mx-auto mt-8 md:mt-16 shadow-xl"
-          />
+          {/* Main Solid Serif Heading (Lower Baseline for Non-Intersection) */}
+          <div className="mt-auto mb-[15vh]">
+             <motion.h1 
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.8, ease: "easeOut" }}
+                className="text-[clamp(2.5rem,15vw,10.5rem)] font-serif font-medium leading-[0.85] tracking-[-0.04em] text-[#1a1a1a] drop-shadow-sm px-12 md:px-24"
+             >
+                {t("heroSubtitle").toUpperCase()}
+             </motion.h1>
+             
+             {/* Supporting Bilinguality (Balanced Baseline) */}
+             <div className="flex justify-center items-center gap-16 mt-16 opacity-30">
+                <span className="tagline !text-[9px] tracking-[0.7em]">Brewing Crafts</span>
+                <div className="w-12 h-[0.5px] bg-[#1a1a1a]" />
+                <span className="tagline !text-[9px] tracking-[0.7em]">بلاك دروب المختصة</span>
+             </div>
+          </div>
         </motion.div>
+
+        {/* SECTION METADATA ARCHITECTURE */}
+        <div className="absolute bottom-12 right-[15vw] hidden lg:block">
+           <span className="label-meta tracking-[1em] !text-[7px] opacity-10 uppercase">Signature.001 / Edition.2026</span>
+        </div>
+
       </div>
-    </div>
+    </section>
   );
 }

@@ -5,68 +5,30 @@ import { useLanguage } from "@/context/LanguageContext";
 import { Globe } from "lucide-react";
 
 export default function Navigation() {
-  const { language, toggleLanguage, t } = useLanguage();
+  const { language, toggleLanguage } = useLanguage();
 
   return (
-    <>
-      {/* Top Left Logo */}
-      <div className="fixed top-8 left-8 z-50">
-        <h1 className="text-3xl font-bold tracking-tighter leading-none">
+    <header className="fixed top-0 inset-x-0 z-[100] px-8 py-10 pointer-events-none flex justify-between items-start mix-blend-difference">
+      
+      {/* Editorial Logo */}
+      <div className="pointer-events-auto">
+        <h1 className="text-2xl md:text-3xl font-serif font-black tracking-tighter leading-[0.85] text-white">
           BLACK<br />DROP
-          <span className="block text-[10px] tracking-[0.3em] font-sans font-medium mt-1">COFFEE</span>
+          <span className="block text-[8px] md:text-[9px] tracking-[0.6em] font-sans font-bold mt-2 text-white/60">EST. 2026</span>
         </h1>
       </div>
 
-      {/* Top Right Toggle */}
-      <div className="fixed top-8 right-8 z-50 flex items-center gap-4">
+      {/* Minimal Language Switcher */}
+      <div className="pointer-events-auto flex items-center gap-4">
         <button 
           onClick={toggleLanguage}
-          className="flex items-center gap-2 px-4 py-2 rounded-full glass hover:bg-white/20 transition-all text-xs font-semibold tracking-wider uppercase"
+          className="group flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/20 text-white backdrop-blur-sm hover:bg-white hover:text-black transition-all duration-500 text-[10px] font-sans font-bold tracking-[0.2em] uppercase"
         >
-          <Globe className="w-4 h-4" />
-          {language === "en" ? "ARABIC" : "ENGLISH"}
+          <Globe className="w-3 h-3 transition-transform group-hover:rotate-180 duration-700" />
+          <span>{language === "en" ? "Ar" : "En"}</span>
         </button>
       </div>
 
-      {/* Dynamic Navigation Footer (English) */}
-      <div className="fixed bottom-8 left-8 z-50 flex gap-8 text-[10px] font-sans tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity">
-        <div className="flex flex-col gap-1">
-          <span className="font-bold mb-2">Roastery</span>
-          <span>For Business</span>
-        </div>
-        <div className="flex flex-col gap-1">
-          <span className="font-bold mb-2">Sales</span>
-          <span>Branches</span>
-        </div>
-        <div className="flex flex-col gap-1">
-          <span className="font-bold mb-2">Website</span>
-          <span>Social Media</span>
-        </div>
-        <div className="flex flex-col gap-1 hidden md:flex">
-          <span className="font-bold mb-2">Inquiries</span>
-          <span>Contact Us</span>
-        </div>
-      </div>
-
-      {/* Dynamic Navigation Footer (Arabic) */}
-      <div className="fixed bottom-8 right-8 z-50 flex gap-8 text-[10px] font-sans tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity text-right">
-        <div className="flex flex-col gap-1 hidden md:flex">
-          <span className="font-bold mb-2">للاستفسارات</span>
-          <span>تواصل</span>
-        </div>
-         <div className="flex flex-col gap-1">
-          <span className="font-bold mb-2">مواقع</span>
-          <span>فروعنا</span>
-        </div>
-        <div className="flex flex-col gap-1">
-          <span className="font-bold mb-3">المبيعات</span>
-          <span>تواصل اجتماعي</span>
-        </div>
-        <div className="flex flex-col gap-1">
-          <span className="font-bold mb-2">المحمصة</span>
-          <span>خدماتنا</span>
-        </div>
-      </div>
-    </>
+    </header>
   );
 }

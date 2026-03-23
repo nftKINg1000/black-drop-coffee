@@ -1,87 +1,80 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { useLanguage } from "@/context/LanguageContext";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { ShoppingCart } from "lucide-react";
 
 export default function IngredientSection() {
-  const { t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
   
-  return (
-    <div ref={containerRef} className="relative min-h-screen bg-white flex flex-col items-center justify-center p-8 overflow-hidden">
-      
-      {/* Precise Golden Ratio Grid Placeholder Layer (as in Screenshot) */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none z-0">
-          <div className="relative w-[400px] md:w-[600px] aspect-[1/1.6] border border-black/10">
-              {/* Golden Ratio Rectangles Mockup */}
-              <div className="absolute inset-0 border-r border-black/10 w-[61.8%]" />
-              <div className="absolute top-0 right-0 h-[38.2%] w-[38.2%] border-b border-black/10" />
-              {/* The Spiral Path */}
-              <svg viewBox="0 0 100 161.8" className="absolute inset-0 w-full h-full stroke-black/20 fill-none stroke-[0.3]">
-                 <path d="M 0 161.8 A 161.8 161.8 0 0 1 161.8 0" transform="scale(0.618)" />
-                 <path d="M 100 61.8 A 61.8 61.8 0 0 0 38.2 0" />
-              </svg>
-          </div>
-      </div>
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
-      {/* Main Ingredient Visual (Croissant Exact Centered) */}
-      <div className="relative w-full max-w-5xl aspect-square flex items-center justify-center z-10">
+  // Balanced Editorial Motion
+  const rotate = useTransform(scrollYProgress, [0, 1], [-8, 8]);
+  const opacity = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0, 1, 1, 0]);
+  
+  return (
+    <div ref={containerRef} className="editorial-section border-t border-black/5 bg-[#f7f6f3] flex flex-col items-center justify-center p-8 overflow-hidden z-20">
+      
+      {/* Editorial Space (Rebalanced Scale) */}
+      <div className="relative w-full max-w-6xl aspect-square flex flex-col items-center justify-center z-10">
          
          <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative w-full h-full flex items-center justify-center"
+            style={{ rotate, opacity }}
+            className="relative w-full h-full flex items-center justify-center mb-16"
          >
             <img 
-              src="/antigravity_assets/ingredients.png" 
-              alt="Golden Ratio Croissant"
-              className="w-[75%] h-[75%] object-contain drop-shadow-[0_40px_100px_rgba(0,0,0,0.1)] pointer-events-none"
+              src="/antigravity_assets/pure_croissant.png" 
+              alt="Artisinal Bakery"
+              className="w-[45%] md:w-[50%] h-auto object-contain drop-shadow-[0_40px_100px_rgba(0,0,0,0.03)] grayscale-[0.05]"
             />
          </motion.div>
 
-         {/* Precise Ingredient Markers & Lines - Screenshot Exact Pos */}
-         <div className="absolute inset-0 pointer-events-none w-full h-full">
+         {/* MASTER EDITORIAL CALLOUTS - ULTRA-MINIMAL ARCHITECTURE */}
+         <div className="absolute inset-x-12 md:inset-x-24 inset-y-0 pointer-events-none w-full h-full opacity-30">
             
-            {/* Almond (Top Right) */}
+            {/* Callout A (Upper Corner) */}
             <motion.div 
               initial={{ x: 20, opacity: 0 }}
               animate={isInView ? { x: 0, opacity: 1 } : { x: 20, opacity: 0 }}
-              transition={{ delay: 0.3 }}
-              className="absolute top-[32%] right-[5%] md:right-[12%] flex items-center"
+              transition={{ delay: 0.8, duration: 1.5 }}
+              className="absolute top-[38%] right-[2%] md:right-[5%] flex items-center"
              >
-              <div className="w-1.5 h-1.5 rounded-full border border-black mr-2" />
-              <div className="h-px w-24 md:w-32 bg-black/30 mr-4" />
-              <span className="text-[10px] md:text-[11px] font-bold tracking-[0.3em] uppercase opacity-70">Almond</span>
+              <div className="h-[0.5px] w-48 md:w-64 bg-[#1a1a1a] mr-12" />
+              <div className="flex flex-col text-left">
+                 <span className="tagline !tracking-[1em] !text-[7px]">Origin 01</span>
+                 <span className="tagline !tracking-[0.8em] !text-[6px] !opacity-30 mt-2">Organic Almond Roast</span>
+              </div>
             </motion.div>
 
-            {/* Crust (Center Left) */}
+            {/* Callout B (Lower Corner) */}
             <motion.div 
               initial={{ x: -20, opacity: 0 }}
               animate={isInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
-              transition={{ delay: 0.5 }}
-              className="absolute top-[52%] left-[5%] md:left-[10%] flex items-center flex-row-reverse"
+              transition={{ delay: 1, duration: 1.5 }}
+              className="absolute bottom-[42%] left-[2%] md:left-[5%] flex items-center flex-row-reverse"
              >
-              <div className="w-1.5 h-1.5 rounded-full border border-black ml-2" />
-              <div className="h-px w-24 md:w-48 bg-black/30 ml-4" />
-              <span className="text-[10px] md:text-[11px] font-bold tracking-[0.3em] uppercase opacity-70">Crust</span>
-            </motion.div>
-
-            {/* Powdered Sugar (Bottom Right) */}
-            <motion.div 
-              initial={{ y: 20, opacity: 0 }}
-              animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-              transition={{ delay: 0.7 }}
-              className="absolute bottom-[28%] right-[8%] md:right-[18%] flex items-center"
-             >
-              <div className="w-1.5 h-1.5 rounded-full border border-black mr-2" />
-              <div className="h-px w-24 md:w-32 bg-black/30 mr-4" />
-              <span className="text-[10px] md:text-[11px] font-bold tracking-[0.3em] uppercase opacity-70">Powdered Sugar</span>
+              <div className="h-[0.5px] w-48 md:w-80 bg-[#1a1a1a] ml-12" />
+              <div className="flex flex-col text-right">
+                 <span className="tagline !tracking-[1em] !text-[7px]">Selection 02</span>
+                 <span className="tagline !tracking-[0.8em] !text-[6px] !opacity-30 mt-2">Golden Sourdough Core</span>
+              </div>
             </motion.div>
 
          </div>
+
+         {/* COMPOSITION CTA (CENTER BASELINE) */}
+         <div className="absolute bottom-24 flex flex-col items-center">
+            <button className="button-editorial">
+               <ShoppingCart className="w-3.5 h-3.5" strokeWidth={1} />
+               <span>Add To Selection</span>
+            </button>
+         </div>
+         
       </div>
 
     </div>

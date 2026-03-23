@@ -1,82 +1,56 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #000000;
-  --color-secondary: #ffffff;
-  --color-accent: #f5f5f5;
-  --color-coffee: #1a1a1a;
-  
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-serif: "Playfair Display", serif;
-  
-  --spacing-section: 120px;
-  --spacing-container: 40px;
+  --font-sans: "Inter", "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Bodoni Moda", "Cormorant Garamond", ui-serif, Georgia, serif;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #000000;
+@layer base {
+  body {
+    background-color: #f7f6f3; /* High-end Light Stone wash */
+    color: #1a1a1a; /* Depth Charcoal */
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    @apply selection:bg-[#1a1a1a] selection:text-white;
+  }
 }
 
-[data-theme='dark'] {
-  --background: #000000;
-  --foreground: #ffffff;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
-/* Custom Scrollbar for Premium Feel */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.4);
+/* Luxury Editorial Typography Rules */
+h1 {
+  @apply font-serif text-[clamp(2rem,6vw,4.5rem)] leading-[1.05] tracking-[-0.04em] font-medium;
 }
 
-body {
-  @apply bg-white text-black font-sans antialiased overflow-x-hidden;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+h2 {
+  @apply font-serif text-[clamp(1.5rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] font-medium;
 }
 
-h1, h2, h3, h4 {
-  @apply font-serif;
-  letter-spacing: -0.02em;
+h3 {
+  @apply font-serif text-[clamp(1.2rem,3vw,2rem)] leading-[1.15] tracking-[-0.02em] font-medium uppercase;
 }
 
-canvas {
-  @apply fixed inset-0 w-full h-full pointer-events-none;
+.tagline {
+  @apply font-sans text-[8px] md:text-[9px] uppercase tracking-[0.8em] font-bold text-[#1a1a1a] opacity-30;
 }
 
-/* Custom Utilities */
-.text-balance {
-  text-wrap: balance;
+.label-meta {
+  @apply font-sans text-[8px] uppercase tracking-[0.4em] font-bold text-[#1a1a1a]/20;
 }
 
-.scrolly-section {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
+.button-editorial {
+  @apply flex items-center gap-4 bg-transparent border border-[#1a1a1a]/10 text-[#1a1a1a] px-10 py-4 rounded-full text-[9px] font-sans font-bold tracking-[0.4em] uppercase hover:bg-[#1a1a1a] hover:text-white transition-all duration-700 active:scale-[0.98];
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Editorial Grid & Layout System */
+.editorial-container {
+  @apply w-full max-w-6xl mx-auto px-8 md:px-16;
 }
 
-.dark-glass {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.editorial-section {
+  @apply relative min-h-screen w-full flex flex-col items-center justify-center py-32;
 }
