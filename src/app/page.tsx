@@ -3,7 +3,8 @@
 import React from "react";
 import HeroSection from "@/sections/HeroSection";
 import ProductShowcase from "@/sections/ProductShowcase";
-import CateringBooking from "@/sections/CateringBooking";
+import IngredientSection from "@/sections/IngredientSection";
+import CateringSection from "@/sections/CateringSection";
 import UmbrellaSection from "@/sections/UmbrellaSection";
 import Navigation from "@/components/Navigation";
 
@@ -14,24 +15,27 @@ export default function Home() {
       {/* FINAL APPROVED FLAGSHIP NAVIGATION */}
       <Navigation />
       
-      {/* FINAL APPROVED SHIP-LEVEL CONTENT FLOW (4 SECTIONS) */}
+      {/* FINAL APPROVED SHIP-LEVEL CONTENT FLOW (5 CORE SECTIONS) */}
       <div className="relative z-10 w-full overflow-x-hidden">
         
-        {/* ONE: DOMINANT HERO (MODERN CINEMATIC VIEWPORT) */}
+        {/* ONE: IMMERSIVE HERO (LOCKED AS-IS) */}
         <HeroSection />
 
-        {/* TWO: MAIN COFFEE PRODUCT SHOWCASE (MASTER COFFEE BAG) */}
+        {/* TWO: MAIN COFFEE PRODUCT SHOWCASE (PDF-FIDELITY BAG PRESENTATION) */}
         <ProductShowcase />
 
-        {/* THREE: CATERING / BOOKING SECTION (DISTINCT PRODUCT-STYLE BLOCK) */}
-        <CateringBooking />
+        {/* THREE: PASTRY / DETAIL SECTION (PDF-FIDELITY PASTRY LABELS) */}
+        <IngredientSection />
 
-        {/* FOUR: ROTATING UMBRELLA SECTION (FINAL VISUAL CLOSURE) */}
+        {/* FOUR: CATERING / BOOKING SECTION (AI-FIDELITY ETHIOPIA DRAW-IN + BOOKING FLOW) */}
+        <CateringSection />
+
+        {/* FIVE: FINAL UMBRELLA SECTION (FIDELITY UMBRELLA CROP PRESENTATION) */}
         <UmbrellaSection />
 
       </div>
 
-      {/* NO REPEATED SECTIONS, NO INVENTED FILLER, NO FOOTER */}
+      {/* NO INVENTED FILLER, NO FOOTER, NO SPACING SPARES */}
     </main>
   );
 }
