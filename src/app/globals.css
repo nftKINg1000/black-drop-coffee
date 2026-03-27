@@ -2,44 +2,35 @@
 
 @layer base {
   :root {
-    --font-display: 'Cormorant Garamond', serif;
-    --font-body: 'DM Sans', sans-serif;
-    --font-arabic: 'Tajawal', sans-serif;
+    --font-en: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-ar: 'Tajawal', sans-serif;
   }
 
-  body {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
     background-color: #ffffff;
     color: #000000;
-    font-family: var(--font-body);
+    font-family: var(--font-en);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
     scroll-behavior: smooth;
-  }
-
-  h1, h2, h3 {
-    font-family: var(--font-display);
-  }
-
-  [lang="ar"], .ar {
-    font-family: var(--font-arabic);
-    direction: rtl;
-  }
-
-  /* Base layouts for correct snapping */
-  html, body {
-    /* To enable smooth scroll snap */
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
   }
-}
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 }
 
-@keyframes rotateCup {
-  0%   { transform: perspective(1200px) rotateY(0deg); }
-  50%  { transform: perspective(1200px) rotateY(18deg); }
-  100% { transform: perspective(1200px) rotateY(0deg); }
+@keyframes cupRock {
+  0%   { transform: perspective(900px) rotateY(-8deg); }
+  50%  { transform: perspective(900px) rotateY(8deg); }
+  100% { transform: perspective(900px) rotateY(-8deg); }
 }

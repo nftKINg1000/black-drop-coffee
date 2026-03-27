@@ -3,83 +3,105 @@
 import React, { useState } from "react";
 
 export default function UmbrellaSection() {
-  const [focusEmail, setFocusEmail] = useState(false);
-  const [focusNumber, setFocusNumber] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [numFocus, setNumFocus] = useState(false);
+
+  const inputStyle = (focused: boolean): React.CSSProperties => ({
+    width: "260px",
+    padding: "10px 20px",
+    border: `1px solid ${focused ? "#000000" : "#cccccc"}`,
+    borderRadius: "999px",
+    fontSize: "13px",
+    fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+    outline: "none",
+    background: "#fff",
+    color: "#000",
+    transition: "border-color 0.2s",
+  });
+
+  const labelStyle: React.CSSProperties = {
+    fontSize: "11px",
+    fontWeight: 400,
+    letterSpacing: "0.1em",
+    color: "#999",
+    width: "52px",
+    fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+  };
 
   return (
-    <section 
-      style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}
-      className="w-full bg-white text-black snap-start shrink-0"
+    <section
+      style={{
+        width: "100vw",
+        height: "100vh",
+        backgroundColor: "#ffffff",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "64px",
+      }}
     >
-      
-      {/* Umbrella image block */}
-      <img src="/assets/umbrella-exact.png"
-           alt="Umbrella Reference"
-           style={{ width: "280px", height: "auto", display: "block", margin: "0 auto 64px auto", position: "static" }} 
+      {/* Umbrella image — static, in normal flow */}
+      <img
+        src="/assets/umbrella-exact.png"
+        alt="Black Drop Coffee umbrella"
+        style={{ width: "260px", height: "auto", display: "block" }}
       />
 
-      {/* Contact Form */}
-      <div style={{ width: "280px", display: "flex", flexDirection: "column", gap: "24px" }}>
-         
-         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            <label style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#888", letterSpacing: "0.1em" }}>
-               Email
-            </label>
-            <input 
-              type="text" 
-              placeholder="iblackdrop@trymore.com"
-              onFocus={() => setFocusEmail(true)}
-              onBlur={() => setFocusEmail(false)}
-              style={{
-                border: `1px solid ${focusEmail ? "#000" : "#d0d0d0"}`,
-                borderRadius: "999px",
-                padding: "10px 20px",
-                width: "280px",
-                fontFamily: "var(--font-body)",
-                fontSize: "14px",
-                outline: "none",
-                background: "transparent",
-                color: "#000"
-              }}
-              className="placeholder-[#bbb]"
-            />
-         </div>
+      {/* Contact form */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: "16px",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <label style={labelStyle}>Email</label>
+          <input
+            type="email"
+            placeholder="iblackdrop@trymore.com"
+            onFocus={() => setEmailFocus(true)}
+            onBlur={() => setEmailFocus(false)}
+            style={inputStyle(emailFocus)}
+          />
+        </div>
 
-         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            <label style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#888", letterSpacing: "0.1em" }}>
-               Number
-            </label>
-            <input 
-              type="text" 
-              placeholder="0500000000"
-              onFocus={() => setFocusNumber(true)}
-              onBlur={() => setFocusNumber(false)}
-              style={{
-                border: `1px solid ${focusNumber ? "#000" : "#d0d0d0"}`,
-                borderRadius: "999px",
-                padding: "10px 20px",
-                width: "280px",
-                fontFamily: "var(--font-body)",
-                fontSize: "14px",
-                outline: "none",
-                background: "transparent",
-                color: "#000"
-              }}
-              className="placeholder-[#bbb]"
-            />
-         </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <label style={labelStyle}>Number</label>
+          <input
+            type="tel"
+            placeholder="0500000000"
+            onFocus={() => setNumFocus(true)}
+            onBlur={() => setNumFocus(false)}
+            style={inputStyle(numFocus)}
+          />
+        </div>
 
-         <div style={{ width: "100%", display: "flex", justifyContent: "flex-end", marginTop: "4px" }}>
-            <button 
-              style={{ fontFamily: "var(--font-body)", fontSize: "12px", cursor: "pointer", background: "none", border: "none", padding: 0, color: "#000" }}
-              className="hover:opacity-50 transition-opacity"
-            >
-               Send &rarr;
-            </button>
-         </div>
-
+        <div style={{ width: "100%", display: "flex", justifyContent: "flex-end", paddingRight: "0px" }}>
+          <button
+            style={{
+              fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+              fontSize: "12px",
+              fontWeight: 400,
+              letterSpacing: "0.05em",
+              color: "#000",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: 0,
+              opacity: 1,
+              transition: "opacity 0.2s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.4")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+          >
+            Send →
+          </button>
+        </div>
       </div>
-
     </section>
   );
 }

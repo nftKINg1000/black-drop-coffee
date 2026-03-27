@@ -6,7 +6,7 @@ import CustomCursor from "@/components/CustomCursor";
 
 export const metadata: Metadata = {
   title: "Black Drop Coffee",
-  description: "Minimal. White-background. Typographic.",
+  description: "Specialty Roastery. EST. 2016.",
 };
 
 export default function RootLayout({
@@ -19,9 +19,12 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body className="antialiased bg-white text-black selection:bg-black selection:text-white cursor-none">
+      <body>
         <LanguageProvider>
           <SmoothScroll>
             <CustomCursor />

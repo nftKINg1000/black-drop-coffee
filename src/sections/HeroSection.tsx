@@ -7,60 +7,65 @@ export default function HeroSection() {
     <section
       style={{
         position: "relative",
-        width: "100%",
+        width: "100vw",
         height: "100vh",
         backgroundColor: "#ffffff",
         overflow: "hidden",
       }}
     >
-      {/* 1. LOGO — top-left, mix-blend-mode: difference */}
+      {/* A. LOGO */}
       <div
         style={{
+          fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+          fontSize: "14px",
+          fontWeight: 700,
+          lineHeight: 1.2,
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          color: "#ffffff",
+          mixBlendMode: "difference",
           position: "absolute",
           top: "40px",
           left: "48px",
-          fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-          fontSize: "15px",
-          fontWeight: 700,
-          lineHeight: 1.15,
-          letterSpacing: "0.06em",
-          textTransform: "uppercase",
-          color: "white",
-          mixBlendMode: "difference",
-          pointerEvents: "none",
           zIndex: 10,
-          whiteSpace: "pre",
+          pointerEvents: "none",
+          userSelect: "none",
         }}
       >
-        {"BLACK\nDROP\nCOFFEE"}
+        BLACK<br />DROP<br />COFFEE
       </div>
 
-      {/* 2. CUP VIDEO — centered, gentle Y-axis rock animation */}
+      {/* B. CUP VIDEO — centered, gently rocks */}
       <div
         style={{
           position: "absolute",
-          inset: 0,
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          zIndex: 1,
+          pointerEvents: "none",
         }}
       >
         <video
-          src="/antigravity_assets/hero_video.mp4"
           autoPlay
           muted
           loop
           playsInline
+          src="/antigravity_assets/hero_video.mp4"
           style={{
-            height: "72vh",
+            height: "80vh",
             width: "auto",
             objectFit: "contain",
-            animation: "rotateCup 12s ease-in-out infinite",
+            animation: "cupRock 8s ease-in-out infinite",
           }}
         />
       </div>
 
-      {/* 3. FOOTER NAV — pinned to bottom */}
+      {/* C. FOOTER NAV */}
       <div
         style={{
           position: "absolute",
@@ -68,32 +73,35 @@ export default function HeroSection() {
           left: 0,
           right: 0,
           padding: "28px 48px",
+          zIndex: 10,
           display: "flex",
+          flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "flex-end",
-          color: "white",
           mixBlendMode: "difference",
           pointerEvents: "none",
-          zIndex: 10,
         }}
       >
-        {/* Left EN Column */}
+        {/* Left – EN */}
         <div
           style={{
             fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
             fontSize: "11px",
             fontWeight: 400,
-            letterSpacing: "0.08em",
+            letterSpacing: "0.07em",
+            color: "#ffffff",
             lineHeight: 2,
-            textAlign: "left",
+            display: "flex",
+            flexDirection: "column",
+            gap: 0,
           }}
         >
-          <div style={{ display: "flex", gap: "24px" }}>
+          <div style={{ display: "flex", gap: "20px" }}>
             <span>Roastery</span>
             <span>Sales</span>
             <span>Website</span>
           </div>
-          <div style={{ display: "flex", gap: "24px" }}>
+          <div style={{ display: "flex", gap: "20px" }}>
             <span>For Business</span>
             <span>Branches</span>
             <span>Social Media</span>
@@ -101,31 +109,34 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right AR Column */}
+        {/* Right – AR */}
         <div
           dir="rtl"
           style={{
             fontFamily: "'Tajawal', sans-serif",
             fontSize: "11px",
             fontWeight: 400,
-            letterSpacing: "0.08em",
+            letterSpacing: "0.07em",
+            color: "#ffffff",
             lineHeight: 2,
             textAlign: "right",
+            display: "flex",
+            flexDirection: "column",
+            gap: 0,
           }}
         >
-          <div style={{ display: "flex", gap: "24px" }}>
+          <div style={{ display: "flex", gap: "20px" }}>
             <span>موقع الكتروني</span>
             <span>المبيعات</span>
             <span>مبيعات المحمصة</span>
           </div>
-          <div style={{ display: "flex", gap: "24px" }}>
+          <div style={{ display: "flex", gap: "20px" }}>
             <span>للاستفسارات</span>
             <span>فروعنا</span>
             <span>تواصل اجتماعي</span>
             <span>للتواصل</span>
           </div>
         </div>
-
       </div>
     </section>
   );
