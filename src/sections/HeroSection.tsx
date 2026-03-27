@@ -13,13 +13,13 @@ export default function HeroSection() {
         overflow: "hidden",
       }}
     >
-      {/* A. LOGO */}
+      {/* LOGO — top-left */}
       <div
         style={{
           fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-          fontSize: "17px",
+          fontSize: "18px",
           fontWeight: 700,
-          lineHeight: 1.25,
+          lineHeight: 1.2,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
           color: "#ffffff",
@@ -35,7 +35,7 @@ export default function HeroSection() {
         BLACK<br />DROP<br />COFFEE
       </div>
 
-      {/* B. CUP VIDEO — centered, NO animation, NO transform */}
+      {/* HERO VIDEO — centered, no animation, no transform */}
       <div
         style={{
           position: "absolute",
@@ -61,14 +61,13 @@ export default function HeroSection() {
             width: "auto",
             objectFit: "contain",
             display: "block",
-            position: "static",
             transform: "none",
             animation: "none",
           }}
         />
       </div>
 
-      {/* C. FOOTER NAV — 3 columns: EN | SPINNING CUP | AR */}
+      {/* FOOTER NAV — text only, no video, two columns */}
       <div
         style={{
           position: "absolute",
@@ -76,34 +75,34 @@ export default function HeroSection() {
           left: 0,
           right: 0,
           padding: "28px 48px",
-          zIndex: 10,
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "flex-end",
-          mixBlendMode: "difference",
-          pointerEvents: "none",
+          zIndex: 10,
         }}
       >
-        {/* Left – EN */}
+        {/* Left — EN */}
         <div
           style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 0,
             fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
             fontSize: "13px",
             fontWeight: 400,
             letterSpacing: "0.08em",
-            color: "#ffffff",
             lineHeight: 2.2,
-            display: "flex",
-            flexDirection: "column",
+            color: "#ffffff",
+            mixBlendMode: "difference",
           }}
         >
-          <div style={{ display: "flex", gap: "20px" }}>
+          <div style={{ display: "flex", gap: "28px" }}>
             <span>Roastery</span>
             <span>Sales</span>
             <span>Website</span>
           </div>
-          <div style={{ display: "flex", gap: "20px" }}>
+          <div style={{ display: "flex", gap: "28px" }}>
             <span>For Business</span>
             <span>Branches</span>
             <span>Social Media</span>
@@ -111,56 +110,33 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Center – Spinning cup */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "center",
-            flex: "0 0 auto",
-          }}
-        >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            src="/antigravity_assets/hero_video.mp4"
-            style={{
-              height: "72px",
-              width: "auto",
-              display: "block",
-              animation: "footerSpin 6s linear infinite",
-              transformOrigin: "center center",
-            }}
-          />
-        </div>
-
-        {/* Right – AR */}
+        {/* Right — AR */}
         <div
           dir="rtl"
           style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 0,
             fontFamily: "'Tajawal', sans-serif",
             fontSize: "13px",
             fontWeight: 400,
-            letterSpacing: "0.08em",
-            color: "#ffffff",
+            letterSpacing: "0.04em",
             lineHeight: 2.2,
+            color: "#ffffff",
+            mixBlendMode: "difference",
             textAlign: "right",
-            display: "flex",
-            flexDirection: "column",
           }}
         >
-          <div style={{ display: "flex", gap: "20px" }}>
-            <span>موقع الكتروني</span>
-            <span>المبيعات</span>
+          <div style={{ display: "flex", gap: "28px" }}>
             <span>مبيعات المحمصة</span>
+            <span>المبيعات</span>
+            <span>موقع الكتروني</span>
           </div>
-          <div style={{ display: "flex", gap: "20px" }}>
-            <span>للاستفسارات</span>
-            <span>فروعنا</span>
-            <span>تواصل اجتماعي</span>
+          <div style={{ display: "flex", gap: "28px" }}>
             <span>للتواصل</span>
+            <span>تواصل اجتماعي</span>
+            <span>فروعنا</span>
+            <span>للاستفسارات</span>
           </div>
         </div>
       </div>

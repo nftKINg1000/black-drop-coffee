@@ -34,22 +34,6 @@ const ChevronRight = () => (
   </svg>
 );
 
-const arrowStyle: React.CSSProperties = {
-  width: "56px",
-  height: "56px",
-  borderRadius: "50%",
-  border: "1px solid #000000",
-  background: "transparent",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  cursor: "pointer",
-  position: "absolute",
-  top: "50%",
-  transform: "translateY(-50%)",
-  zIndex: 10,
-};
-
 export default function ProductShowcase() {
   const [index, setIndex] = useState(0);
   const next = () => setIndex((p) => (p + 1) % SLIDES.length);
@@ -62,23 +46,39 @@ export default function ProductShowcase() {
 
   const slide = SLIDES[index];
 
+  const arrowBase: React.CSSProperties = {
+    width: "56px",
+    height: "56px",
+    borderRadius: "50%",
+    border: "1px solid #000000",
+    background: "transparent",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "pointer",
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
+    zIndex: 10,
+  };
+
   return (
     <section
       style={{
         position: "relative",
         width: "100vw",
         height: "100vh",
-        backgroundColor: "#ffffff",
         overflow: "hidden",
+        backgroundColor: "#ffffff",
       }}
     >
       {/* Left arrow */}
-      <button onClick={prev} style={{ ...arrowStyle, left: "48px" }} aria-label="Previous">
+      <button onClick={prev} style={{ ...arrowBase, left: "48px" }} aria-label="Previous">
         <ChevronLeft />
       </button>
 
       {/* Right arrow */}
-      <button onClick={next} style={{ ...arrowStyle, right: "48px" }} aria-label="Next">
+      <button onClick={next} style={{ ...arrowBase, right: "48px" }} aria-label="Next">
         <ChevronRight />
       </button>
 
@@ -109,7 +109,7 @@ export default function ProductShowcase() {
         </AnimatePresence>
       </div>
 
-      {/* Caption bottom-left (EN) — 15px */}
+      {/* Caption bottom-left EN */}
       <div
         style={{
           position: "absolute",
@@ -120,13 +120,14 @@ export default function ProductShowcase() {
           fontWeight: 300,
           color: "#1a1a1a",
           lineHeight: 1.8,
+          zIndex: 10,
         }}
       >
         <div>{slide.enLine1}</div>
         <div>{slide.enLine2}</div>
       </div>
 
-      {/* Caption bottom-right (AR) — 15px Tajawal */}
+      {/* Caption bottom-right AR */}
       <div
         dir="rtl"
         style={{
@@ -139,6 +140,7 @@ export default function ProductShowcase() {
           color: "#1a1a1a",
           lineHeight: 1.8,
           textAlign: "right",
+          zIndex: 10,
         }}
       >
         <div>{slide.arLine1}</div>
