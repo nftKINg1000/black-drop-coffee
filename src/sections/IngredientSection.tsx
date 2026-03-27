@@ -5,76 +5,85 @@ import { motion, useInView } from "framer-motion";
 
 export default function IngredientSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: false, amount: 0.3 });
-  
+  const isInView = useInView(containerRef, { once: true, amount: 0.3 });
+
+  const customEasing: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+  const slideInVariants = {
+    hidden: { x: "-100vw", opacity: 0 },
+    visible: (custom: number) => ({
+      x: 0,
+      opacity: 1,
+      transition: { 
+        duration: 0.9, 
+        ease: customEasing,
+        delay: custom * 0.15
+      }
+    })
+  };
+
   return (
-    <section ref={containerRef} className="relative w-full bg-[#f7f6f3] flex flex-col items-center justify-center p-8 md:p-32 border-t border-black/5 z-20 min-h-[70vh] md:min-h-0">
+    <section ref={containerRef} className="relative w-full h-[100vh] bg-white flex items-center justify-center overflow-hidden snap-start shrink-0">
       
-      {/* 3. PASTRY / DETAIL SECTION (HARD RECOVERY - VISIBLE RENDERING) */}
-      <div className="relative w-full max-w-5xl flex flex-col items-center justify-center z-10">
+      <div className="relative w-full h-full max-w-[1200px] flex items-center justify-center pointer-events-none">
          
+         {/* THE PASTRY IMAGE */}
          <motion.div 
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.98 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="relative w-full h-full flex items-center justify-center mb-24 md:mb-32"
+            custom={0}
+            variants={slideInVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="relative w-[80%] md:w-[60%] lg:w-[45%] h-auto max-h-[80vh] flex items-center justify-center"
          >
-            {/* MANDATORY: The ACTUAL EXACT pastry image (Visibly Renders only) */}
             <img 
               src="/assets/pastry-callout-exact.png" 
-              alt="Exact Pastry Detail Production"
-              width={650}
-              height={650}
-              className="w-[65%] md:w-[75%] h-auto object-contain block opacity-100 grayscale-[0.05]"
+              alt="Pastry Callout Overlay with Fibonacci Spiral"
+              className="w-full object-contain pointer-events-none drop-shadow-none"
             />
+
+            {/* CALLOUTS (Positioned absolutely over the pastry wrapper) */}
+            
+            {/* Almond - Top Right */}
+            <motion.div 
+              custom={1}
+              variants={slideInVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              className="absolute top-[16%] left-[68%] flex items-center z-20 pointer-events-none whitespace-nowrap"
+            >
+               <div className="w-[4px] h-[4px] bg-black rounded-full" />
+               <div className="h-[1px] bg-black w-[80px] md:w-[120px]" />
+               <span className="ml-3 text-[12px] md:text-[14px] font-sans text-black">Almond</span>
+            </motion.div>
+
+            {/* Crust - Mid Left */}
+            <motion.div 
+              custom={2}
+              variants={slideInVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              className="absolute top-[48%] right-[85%] flex items-center flex-row-reverse z-20 pointer-events-none whitespace-nowrap"
+            >
+               <div className="w-[4px] h-[4px] bg-black rounded-full" />
+               <div className="h-[1px] bg-black w-[100px] md:w-[150px]" />
+               <span className="mr-3 text-[12px] md:text-[14px] font-sans text-black">Crust</span>
+            </motion.div>
+
+            {/* Powdered Sugar - Bottom Right */}
+            <motion.div 
+              custom={3}
+              variants={slideInVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              className="absolute top-[78%] left-[80%] flex items-center z-20 pointer-events-none whitespace-nowrap"
+            >
+               <div className="w-[4px] h-[4px] bg-black rounded-full" />
+               <div className="h-[1px] bg-black w-[60px] md:w-[100px]" />
+               <span className="ml-3 text-[12px] md:text-[14px] font-sans text-black">Powdered Sugar</span>
+            </motion.div>
+
          </motion.div>
 
-         {/* LABELLING CALLOUTS (Slide-In Concept faithfully followed) */}
-         <div className="absolute inset-0 pointer-events-none w-full h-full z-20">
-            
-            {/* Callout 1: Almond (Following PDF Slide-in Note) */}
-            <motion.div 
-              initial={{ x: 60, opacity: 0 }}
-              animate={isInView ? { x: 0, opacity: 1 } : { x: 60, opacity: 0 }}
-              transition={{ delay: 1, duration: 1.2 }}
-              className="absolute top-[32%] right-[5%] md:right-[15%] flex items-center"
-             >
-              <div className="h-[0.5px] w-24 md:w-64 bg-[#1a1a1a] mr-8" />
-              <span className="text-[10px] uppercase font-sans font-bold tracking-[0.4em] text-black opacity-30">Almond</span>
-            </motion.div>
-
-            {/* Callout 2: Crust (Following PDF Slide-in Note) */}
-            <motion.div 
-              initial={{ x: -60, opacity: 0 }}
-              animate={isInView ? { x: 0, opacity: 1 } : { x: -60, opacity: 0 }}
-              transition={{ delay: 1.2, duration: 1.2 }}
-              className="absolute top-[50%] left-[2%] md:left-[10%] flex items-center flex-row-reverse"
-             >
-              <div className="h-[0.5px] w-32 md:w-72 bg-[#1a1a1a] ml-8" />
-              <span className="text-[10px] uppercase font-sans font-bold tracking-[0.4em] text-black opacity-30">Crust</span>
-            </motion.div>
-
-            {/* Callout 3: Powdered Sugar (Following PDF Slide-in Note) */}
-            <motion.div 
-              initial={{ x: 60, opacity: 0 }}
-              animate={isInView ? { x: 0, opacity: 1 } : { x: 60, opacity: 0 }}
-              transition={{ delay: 1.4, duration: 1.2 }}
-              className="absolute bottom-[28%] right-[8%] md:right-[20%] flex items-center"
-             >
-              <div className="h-[0.5px] w-24 md:w-56 bg-[#1a1a1a] mr-8" />
-              <span className="text-[10px] uppercase font-sans font-bold tracking-[0.4em] text-black opacity-30">Powdered Sugar</span>
-            </motion.div>
-
-         </div>
-
-         {/* Selection CTA (Grounded & Centered) */}
-         <div className="absolute bottom-12 flex flex-col items-center">
-            <span className="mb-8 text-[9px] uppercase font-bold text-black/15 tracking-[1em] italic">Artisinal Craftsmanship</span>
-            <button className="button-editorial !px-12 !py-4 bg-transparent border border-black/15 text-black hover:bg-black hover:text-white uppercase font-bold tracking-[0.2em] shadow-xl">
-               <span>Add to Selection</span>
-            </button>
-         </div>
-         
       </div>
 
     </section>

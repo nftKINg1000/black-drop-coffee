@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, IBM_Plex_Arabic } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif" });
+const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "700", "900"], variable: "--font-sans" });
+const ibmPlexArabic = IBM_Plex_Arabic({ weight: ['400', '500', '700'], subsets: ["arabic"], variable: "--font-arabic" });
 
 export const metadata: Metadata = {
-  title: "Black Drop Coffee | 3D Storytelling Storefront",
-  description: "Experience the narrative of premium coffee roasting.",
+  title: "Black Drop Coffee",
+  description: "Minimal. White-background. Typographic.",
 };
 
 export default function RootLayout({
@@ -19,13 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="antialiased bg-white selection:bg-black selection:text-white cursor-none">
+    <html lang="en" className={`${inter.variable} ${ibmPlexArabic.variable}`}>
+      <body className="antialiased bg-white text-black selection:bg-black selection:text-white cursor-none font-sans">
         <LanguageProvider>
           <SmoothScroll>
             <CustomCursor />
-            {/* Premium Grain Texture Overlay */}
-            <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
             {children}
           </SmoothScroll>
         </LanguageProvider>

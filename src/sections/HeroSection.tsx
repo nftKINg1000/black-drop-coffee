@@ -1,76 +1,59 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import HeroVideo from "@/components/HeroVideo";
 
 export default function HeroSection() {
-  const { t } = useLanguage();
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  // PROFESSIONAL CAMPAIGN MOTION: IMMERSIVE BUT OPEN
-  const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1.2]);
-  const opacity = useTransform(scrollYProgress, [0.85, 1], [1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const { language } = useLanguage();
 
   return (
-    <section ref={containerRef} className="relative h-[200vh] bg-[#f7f6f3] z-20">
+    <section className="relative w-full h-[100vh] bg-white text-black flex flex-col justify-between overflow-hidden snap-start shrink-0">
       
-      {/* FINAL CAMPAIGN VIEWPORT (STICKY) */}
-      <div className="sticky top-0 w-full h-screen flex flex-col items-center justify-center overflow-hidden">
-        
-        {/* REFINED SIDE SLABS (NARROWER & INTEGRATED) */}
-        <div className="absolute inset-y-0 left-0 w-[12vw] bg-[#000000] z-10 hidden lg:block" />
-        <div className="absolute inset-y-0 right-0 w-[12vw] bg-[#000000] z-10 hidden lg:block" />
-
-        {/* DOMINANT CENTRAL VISUAL (CUP) */}
-        <motion.div 
-           style={{ scale, opacity }}
-           className="relative w-full h-full flex items-center justify-center z-0 px-8"
-        >
-          {/* Centered High-Authority Render */}
-          <div className="w-[90vw] h-[90vh] flex items-center justify-center">
-             <HeroVideo />
-          </div>
-        </motion.div>
-
-        {/* RECOMPOSED EDITORIAL OVERLAY (NO COLLISION) */}
-        <motion.div 
-          style={{ y: textY, opacity }}
-          className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none text-center px-8"
-        >
-          {/* Main Solid Serif Heading (Lower Baseline for Non-Intersection) */}
-          <div className="mt-auto mb-[15vh]">
-             <motion.h1 
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.8, ease: "easeOut" }}
-                className="text-[clamp(2.5rem,15vw,10.5rem)] font-serif font-medium leading-[0.85] tracking-[-0.04em] text-[#1a1a1a] drop-shadow-sm px-12 md:px-24"
-             >
-                {t("heroSubtitle").toUpperCase()}
-             </motion.h1>
-             
-             {/* Supporting Bilinguality (Balanced Baseline) */}
-             <div className="flex justify-center items-center gap-16 mt-16 opacity-30">
-                <span className="tagline !text-[9px] tracking-[0.7em]">Brewing Crafts</span>
-                <div className="w-12 h-[0.5px] bg-[#1a1a1a]" />
-                <span className="tagline !text-[9px] tracking-[0.7em]">بلاك دروب المختصة</span>
-             </div>
-          </div>
-        </motion.div>
-
-        {/* SECTION METADATA ARCHITECTURE */}
-        <div className="absolute bottom-12 right-[15vw] hidden lg:block">
-           <span className="label-meta tracking-[1em] !text-[7px] opacity-10 uppercase">Signature.001 / Edition.2026</span>
+      {/* Central Rotating Cup */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[80vw] md:w-[40vw] max-w-[500px] aspect-square animate-[spin_6s_linear_infinite]" style={{ animationName: "spinY" }}>
+          {/* Note: we use CSS rotateY for continuous vertical axis rotation */}
+          <style>{`
+            @keyframes spinY {
+              from { transform: perspective(1000px) rotateY(0deg); }
+              to { transform: perspective(1000px) rotateY(360deg); }
+            }
+          `}</style>
+          <img 
+            src="/antigravity_assets/hero.png" 
+            alt="Rotating Cup" 
+            className="w-full h-full object-contain"
+          />
         </div>
-
       </div>
+
+      {/* Spacer to push footer down */}
+      <div className="flex-1" />
+
+      {/* Bottom Footer Nav inside Hero */}
+      <div className="w-full px-8 pb-8 z-20">
+        {/* Left EN row */}
+        <div className="flex flex-wrap justify-between items-center text-[11px] font-sans font-bold uppercase tracking-widest border-b border-black pb-4 mb-4">
+          <span>Roastery</span>
+          <span>Sales</span>
+          <span>Website</span>
+          <span>For Business</span>
+          <span>Branches</span>
+          <span>Social Media</span>
+          <span>Inquiries</span>
+        </div>
+        {/* Right AR row */}
+        <div className="flex flex-wrap justify-between items-center text-[12px] font-arabic font-bold text-right w-full" dir="rtl">
+           <span>موقع الكتروني</span>
+           <span>المبيعات</span>
+           <span>مبيعات المحمصة</span>
+           <span>للاستفسارات</span>
+           <span>فروعنا</span>
+           <span>تواصل اجتماعي</span>
+           <span>للتواصل</span>
+        </div>
+      </div>
+
     </section>
   );
 }

@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Bodoni Moda", "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: var(--font-arabic), "IBM Plex Arabic", sans-serif;
 }
 
 @layer base {
   body {
-    background-color: #f7f6f3; /* High-end Light Stone wash */
-    color: #1a1a1a; /* Depth Charcoal */
+    background-color: #ffffff;
+    color: #000000;
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
-    @apply selection:bg-[#1a1a1a] selection:text-white;
+    @apply selection:bg-[#000] selection:text-white;
   }
 }
 
@@ -21,36 +21,38 @@
   }
 }
 
-/* Luxury Editorial Typography Rules */
+/* Grotesque Typography Rules */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-sans font-bold tracking-tight;
+}
+
 h1 {
-  @apply font-serif text-[clamp(2rem,6vw,4.5rem)] leading-[1.05] tracking-[-0.04em] font-medium;
+  @apply text-[clamp(2rem,6vw,4.5rem)] leading-[1.05];
 }
 
 h2 {
-  @apply font-serif text-[clamp(1.5rem,4vw,3.5rem)] leading-[1.1] tracking-[-0.03em] font-medium;
+  @apply text-[clamp(1.5rem,4vw,3.5rem)] leading-[1.1];
 }
 
 h3 {
-  @apply font-serif text-[clamp(1.2rem,3vw,2rem)] leading-[1.15] tracking-[-0.02em] font-medium uppercase;
+  @apply text-[clamp(1.2rem,3vw,2rem)] leading-[1.15] uppercase;
 }
 
 .tagline {
-  @apply font-sans text-[8px] md:text-[9px] uppercase tracking-[0.8em] font-bold text-[#1a1a1a] opacity-30;
+  @apply font-sans text-[8px] md:text-[9px] uppercase tracking-[0.8em] font-bold text-[#000];
 }
 
 .label-meta {
-  @apply font-sans text-[8px] uppercase tracking-[0.4em] font-bold text-[#1a1a1a]/20;
+  @apply font-sans text-[8px] uppercase tracking-[0.4em] font-bold text-[#000];
 }
 
 .button-editorial {
-  @apply flex items-center gap-4 bg-transparent border border-[#1a1a1a]/10 text-[#1a1a1a] px-10 py-4 rounded-full text-[9px] font-sans font-bold tracking-[0.4em] uppercase hover:bg-[#1a1a1a] hover:text-white transition-all duration-700 active:scale-[0.98];
+  @apply flex items-center gap-4 bg-transparent border border-[#000] text-[#000] px-10 py-4 rounded-full text-[9px] font-sans font-bold tracking-[0.4em] uppercase hover:bg-[#000] hover:text-white transition-all duration-300;
 }
 
-/* Editorial Grid & Layout System */
-.editorial-container {
-  @apply w-full max-w-6xl mx-auto px-8 md:px-16;
-}
-
-.editorial-section {
-  @apply relative min-h-screen w-full flex flex-col items-center justify-center py-32;
+/* Base layouts for correct snapping */
+html, body {
+  /* To enable smooth scroll snap */
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
 }

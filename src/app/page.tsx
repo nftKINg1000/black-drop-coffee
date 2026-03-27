@@ -10,32 +10,31 @@ import Navigation from "@/components/Navigation";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#f7f6f3] selection:bg-black selection:text-white">
+    <main className="relative bg-white text-black">
       
-      {/* FINAL APPROVED FLAGSHIP NAVIGATION */}
+      {/* GLOBAL NAVIGATION */}
       <Navigation />
       
-      {/* FINAL APPROVED SHIP-LEVEL CONTENT FLOW (5 CORE SECTIONS) */}
-      <div className="relative z-10 w-full overflow-x-hidden">
+      {/* 5 CORE SECTIONS */}
+      <div className="relative z-10 w-full overflow-x-hidden flex flex-col snap-y snap-mandatory h-screen overflow-y-scroll">
         
-        {/* ONE: IMMERSIVE HERO (LOCKED AS-IS) */}
+        {/* ONE: IMMERSIVE HERO */}
         <HeroSection />
 
-        {/* TWO: MAIN COFFEE PRODUCT SHOWCASE (PDF-FIDELITY BAG PRESENTATION) */}
+        {/* TWO: MAIN COFFEE PRODUCT SHOWCASE */}
         <ProductShowcase />
 
-        {/* THREE: PASTRY / DETAIL SECTION (PDF-FIDELITY PASTRY LABELS) */}
+        {/* THREE: PASTRY / DETAIL SECTION */}
         <IngredientSection />
 
-        {/* FOUR: CATERING / BOOKING SECTION (AI-FIDELITY ETHIOPIA DRAW-IN + BOOKING FLOW) */}
+        {/* FOUR: CATERING / BOOKING SECTION */}
         <CateringSection />
 
-        {/* FIVE: FINAL UMBRELLA SECTION (FIDELITY UMBRELLA CROP PRESENTATION) */}
+        {/* FIVE: ROASTING VIDEO / UMBRELLA */}
         <UmbrellaSection />
 
       </div>
 
-      {/* NO INVENTED FILLER, NO FOOTER, NO SPACING SPARES */}
     </main>
   );
 }
