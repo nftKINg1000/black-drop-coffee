@@ -1,12 +1,9 @@
 "use client";
 
 import React from "react";
-import { useLanguage } from "@/context/LanguageContext";
-import { Globe } from "lucide-react";
+import { Search } from "lucide-react";
 
 export default function Navigation() {
-  const { language, toggleLanguage } = useLanguage();
-
   return (
     <header className="fixed top-0 inset-x-0 z-[100] px-8 py-8 pointer-events-none flex justify-between items-start mix-blend-normal">
       
@@ -22,14 +19,10 @@ export default function Navigation() {
         <img src="/assets/umbrella-exact.png" alt="BD Logo" className="w-[28px] h-[28px] object-contain" />
       </div>
 
-      {/* Language Switcher */}
+      {/* Search Top Right */}
       <div className="pointer-events-auto flex items-center gap-4">
-        <button 
-          onClick={toggleLanguage}
-          className="group flex items-center gap-2 px-4 py-2 border border-black/10 text-black rounded-full hover:bg-black hover:text-white transition-all duration-300 text-[10px] font-sans font-bold tracking-[0.2em] uppercase"
-        >
-          <Globe className="w-3 h-3 group-hover:rotate-180 duration-500" />
-          <span>{language === "en" ? "Ar" : "En"}</span>
+        <button className="flex items-center justify-center p-2 text-black hover:opacity-50 transition-opacity">
+          <Search className="w-5 h-5 stroke-[1.5]" />
         </button>
       </div>
 

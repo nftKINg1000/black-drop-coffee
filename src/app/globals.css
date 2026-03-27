@@ -56,3 +56,8 @@ html, body {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
 }
+
+@keyframes spinCup {
+  0%   { transform: perspective(800px) rotateY(0deg); }
+  100% { transform: perspective(800px) rotateY(360deg); }
+}

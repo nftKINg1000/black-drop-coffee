@@ -7,52 +7,46 @@ export default function HeroSection() {
   const { language } = useLanguage();
 
   return (
-    <section className="relative w-full h-[100vh] bg-white text-black flex flex-col justify-between overflow-hidden snap-start shrink-0">
+    <section className="relative w-full h-[100vh] bg-[#ffffff] text-[#000000] flex flex-col items-center justify-center overflow-hidden snap-start shrink-0 pt-24 pb-12">
       
-      {/* Central Rotating Cup */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[80vw] md:w-[40vw] max-w-[500px] aspect-square animate-[spin_6s_linear_infinite]" style={{ animationName: "spinY" }}>
-          {/* Note: we use CSS rotateY for continuous vertical axis rotation */}
-          <style>{`
-            @keyframes spinY {
-              from { transform: perspective(1000px) rotateY(0deg); }
-              to { transform: perspective(1000px) rotateY(360deg); }
-            }
-          `}</style>
-          <img 
-            src="/antigravity_assets/hero.png" 
-            alt="Rotating Cup" 
-            className="w-full h-full object-contain"
-          />
-        </div>
+      {/* 2. Headline -> BLACK DROP COFFEE */}
+      <h1 className="text-[72px] font-sans font-bold text-black tracking-[-0.04em] leading-none mb-4 text-center">
+        BLACK DROP COFFEE
+      </h1>
+
+      {/* 3. Sub-line -> EST. 2016 · SPECIALTY ROASTERY */}
+      <span className="text-[13px] font-sans font-light uppercase tracking-[0.2em] text-black/40 text-center mb-8">
+        EST. 2016 &middot; SPECIALTY ROASTERY
+      </span>
+
+      {/* 4. Rotating cup video -> 420px wide */}
+      <div className="flex items-center justify-center mb-12 relative z-10 w-full max-w-[420px]">
+        <video
+          src="/antigravity_assets/hero_video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            width: "420px",
+            height: "auto",
+            animation: "spinCup 8s linear infinite",
+            transformOrigin: "center center",
+            transformStyle: "preserve-3d",
+          }}
+          className="object-contain"
+        />
       </div>
 
-      {/* Spacer to push footer down */}
-      <div className="flex-1" />
+      {/* 5. English Caption -> centered */}
+      <p className="text-[16px] font-sans font-light text-black text-center mb-4">
+        Every cup begins with a single origin.
+      </p>
 
-      {/* Bottom Footer Nav inside Hero */}
-      <div className="w-full px-8 pb-8 z-20">
-        {/* Left EN row */}
-        <div className="flex flex-wrap justify-between items-center text-[11px] font-sans font-bold uppercase tracking-widest border-b border-black pb-4 mb-4">
-          <span>Roastery</span>
-          <span>Sales</span>
-          <span>Website</span>
-          <span>For Business</span>
-          <span>Branches</span>
-          <span>Social Media</span>
-          <span>Inquiries</span>
-        </div>
-        {/* Right AR row */}
-        <div className="flex flex-wrap justify-between items-center text-[12px] font-arabic font-bold text-right w-full" dir="rtl">
-           <span>موقع الكتروني</span>
-           <span>المبيعات</span>
-           <span>مبيعات المحمصة</span>
-           <span>للاستفسارات</span>
-           <span>فروعنا</span>
-           <span>تواصل اجتماعي</span>
-           <span>للتواصل</span>
-        </div>
-      </div>
+      {/* 6. Arabic line -> centered, right-to-left */}
+      <p className="text-[16px] font-arabic font-light text-black text-center" dir="rtl">
+        كل فنجان يبدأ بمصدر واحد.
+      </p>
 
     </section>
   );
