@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Arabic } from "next/font/google";
+import { Inter, Tajawal } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "700", "900"], variable: "--font-sans" });
-const ibmPlexArabic = IBM_Plex_Arabic({ weight: ['400', '500', '700'], subsets: ["arabic"], variable: "--font-arabic" });
+const arabicFont = Tajawal({ weight: ['400', '500', '700'], subsets: ["arabic"], variable: "--font-arabic" });
 
 export const metadata: Metadata = {
   title: "Black Drop Coffee",
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${ibmPlexArabic.variable}`}>
+    <html lang="en" className={`${inter.variable} ${arabicFont.variable}`}>
       <body className="antialiased bg-white text-black selection:bg-black selection:text-white cursor-none font-sans">
         <LanguageProvider>
           <SmoothScroll>
