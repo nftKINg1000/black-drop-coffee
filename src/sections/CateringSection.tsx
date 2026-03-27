@@ -2,7 +2,6 @@
 
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { LucideCalendar, LucideClock, LucideArrowRight } from "lucide-react";
 
 export default function CateringSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -11,81 +10,116 @@ export default function CateringSection() {
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
-  // Ethiopia Border Path (Artist-Level Geometry for Drawing)
+  // Ethiopia Border Path
   const ethiopiaPath = "M62.5,12.5c-4.2-2.1-12.5-4.2-16.7-4.2c-4.2,0-8.3,4.2-8.3,8.3c0,4.2,4.2,8.3,8.3,12.5c2.1,2.1,4.2,4.2,4.2,8.3c0,4.2-2.1,8.3-4.2,12.5 c-2.1,4.2-4.2,8.3-4.2,12.5c0,4.2,4.2,8.3,8.3,12.5c4.2,4.2,8.3,4.2,12.5,4.2c4.2,0,8.3-4.2,12.5-8.3c4.2-4.2,4.2-8.3,4.2-12.5 c0-4.2-2.1-8.3-4.2-12.5c-2.1-4.2-4.2-8.3-4.2-12.5C70.8,20.8,66.7,14.6,62.5,12.5z";
 
   return (
     <section ref={containerRef} className="relative w-full min-h-[100vh] bg-white text-black flex flex-col md:flex-row items-center justify-center overflow-hidden snap-start shrink-0 p-8 md:p-16 gap-16 md:gap-32">
       
-      {/* LEFT COLUMN: SERVICE INTRO & BOOKING UI */}
-      <div className="flex-1 space-y-16 w-full max-w-lg mt-24 md:mt-0">
+      {/* LEFT COLUMN: INTRO & BOOKING UI */}
+      <div className="flex-1 space-y-12 w-full max-w-lg mt-24 md:mt-0">
           
-         {/* Title area matching minimalist style */}
          <div className="space-y-4">
-            <span className="text-[10px] uppercase tracking-widest font-sans font-bold opacity-50">Flagship Events</span>
-            <h2 className="text-4xl md:text-5xl font-sans font-bold tracking-tight leading-none text-black">
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "48px", fontWeight: 300, color: "#000", lineHeight: 1 }}>
                Bespoke<br />Catering
             </h2>
          </div>
 
          {/* BOOKING FLOW */}
-         <div className="space-y-12 w-full">
+         <div className="space-y-10 w-full">
             
-            {/* Date Selection Row */}
-            <div className="space-y-6">
-               <div className="flex items-center gap-4 text-[10px] uppercase font-bold tracking-widest text-black/50">
-                  <LucideCalendar className="w-3 h-3" />
-                  <span>Select Date</span>
+            {/* Date Selection */}
+            <div className="space-y-4">
+               <div style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#888", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                  Select Date
                </div>
-               <div className="grid grid-cols-7 gap-2 md:gap-4 py-4 border-b border-black/10">
-                  {[18, 19, 20, 21, 22, 23, 24].map((d) => (
-                     <button 
-                        key={d} 
-                        onClick={() => setSelectedDate(d)}
-                        className={`w-full aspect-square flex items-center justify-center text-[11px] font-sans font-bold transition-all rounded-full ${
-                          selectedDate === d ? "border border-black" : "hover:border border-transparent text-black/40 hover:text-black"
-                        }`}
-                     >
-                       {d}
-                     </button>
-                  ))}
+               <div className="flex flex-wrap gap-3 pb-4">
+                  {[18, 19, 20, 21, 22, 23, 24].map((d) => {
+                     const isSelected = selectedDate === d;
+                     return (
+                        <button 
+                           key={d} 
+                           onClick={() => setSelectedDate(d)}
+                           style={{ 
+                              width: "40px", 
+                              height: "40px", 
+                              borderRadius: "50%", 
+                              border: isSelected ? "1px solid #000" : "1px solid #e0e0e0", 
+                              backgroundColor: isSelected ? "#000" : "transparent",
+                              color: isSelected ? "#fff" : "#000",
+                              fontFamily: "var(--font-body)",
+                              fontSize: "14px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              cursor: "pointer",
+                              transition: "all 0.3s"
+                           }}
+                        >
+                          {d}
+                        </button>
+                     );
+                  })}
                </div>
             </div>
 
-            {/* Time Selection Row */}
-            <div className="space-y-6">
-               <div className="flex items-center gap-4 text-[10px] uppercase font-bold tracking-widest text-black/50">
-                  <LucideClock className="w-3 h-3" />
-                  <span>Select Time</span>
+            {/* Time Selection */}
+            <div className="space-y-4">
+               <div style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#888", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                  Select Time
                </div>
-               <div className="flex flex-wrap gap-4 py-2 border-b border-black/10 pb-6">
-                  {["09:00", "12:00", "15:00", "18:00"].map((t) => (
-                     <button 
-                        key={t}
-                        onClick={() => setSelectedTime(t)}
-                        className={`px-6 py-2 rounded-full text-[11px] font-sans font-bold border transition-all ${
-                          selectedTime === t ? "border-black" : "border-transparent text-black/40 hover:text-black hover:border-black/20"
-                        }`}
-                     >
-                       {t}
-                     </button>
-                  ))}
+               <div className="flex flex-wrap gap-3 pb-6 border-b border-[#e0e0e0]">
+                  {["09:00", "12:00", "15:00", "18:00"].map((t) => {
+                     const isSelected = selectedTime === t;
+                     return (
+                        <button 
+                           key={t}
+                           onClick={() => setSelectedTime(t)}
+                           style={{ 
+                              padding: "10px 16px",
+                              borderRadius: "4px", 
+                              border: isSelected ? "1px solid #000" : "1px solid #e0e0e0", 
+                              backgroundColor: isSelected ? "#000" : "transparent",
+                              color: isSelected ? "#fff" : "#000",
+                              fontFamily: "var(--font-body)",
+                              fontSize: "14px",
+                              cursor: "pointer",
+                              transition: "all 0.3s"
+                           }}
+                        >
+                          {t}
+                        </button>
+                     );
+                  })}
                </div>
             </div>
 
          </div>
 
          {/* CTA */}
-         <div className="pt-4">
-            <button className="flex items-center gap-4 border border-black text-black px-8 py-3 rounded-full text-[10px] font-sans font-bold tracking-widest uppercase hover:bg-black hover:text-white transition-all">
-               <span>Inquire Selection</span>
-               <LucideArrowRight className="w-4 h-4" />
+         <div className="pt-2">
+            <button 
+               style={{ 
+                  border: "1px solid #000", 
+                  backgroundColor: "transparent",
+                  color: "#000",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "12px",
+                  letterSpacing: "0.15em",
+                  padding: "12px 32px",
+                  textTransform: "uppercase",
+                  cursor: "pointer",
+                  transition: "opacity 0.3s"
+               }}
+               className="hover:opacity-50"
+            >
+               Inquire Selection
             </button>
          </div>
 
       </div>
 
-      {/* RIGHT COLUMN: ETHIOPIA BORDER DRAW-IN */}
+      {/* RIGHT COLUMN: DRAW-IN & IMAGE */}
       <div className="flex-1 relative flex items-center justify-center h-full min-h-[40vh] w-full">
          
          <svg 

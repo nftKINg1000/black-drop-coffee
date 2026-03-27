@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Tajawal } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
-
-const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "700", "900"], variable: "--font-sans" });
-const arabicFont = Tajawal({ weight: ['400', '500', '700'], subsets: ["arabic"], variable: "--font-arabic" });
 
 export const metadata: Metadata = {
   title: "Black Drop Coffee",
@@ -19,8 +15,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${arabicFont.variable}`}>
-      <body className="antialiased bg-white text-black selection:bg-black selection:text-white cursor-none font-sans">
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+      </head>
+      <body className="antialiased bg-white text-black selection:bg-black selection:text-white cursor-none">
         <LanguageProvider>
           <SmoothScroll>
             <CustomCursor />

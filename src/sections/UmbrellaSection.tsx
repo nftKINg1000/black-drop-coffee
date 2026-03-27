@@ -1,67 +1,79 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 export default function UmbrellaSection() {
+  const [focusEmail, setFocusEmail] = useState(false);
+  const [focusNumber, setFocusNumber] = useState(false);
+
   return (
-    <section className="relative w-full min-h-[100vh] bg-white text-black flex flex-col items-center justify-center overflow-hidden snap-start shrink-0 pt-24 pb-12 px-8">
+    <section 
+      style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}
+      className="w-full bg-white text-black snap-start shrink-0"
+    >
       
-      {/* Centered Umbrella Mask Video */}
-      <div className="relative w-full max-w-[400px] aspect-square flex items-center justify-center mb-16">
-        
-        {/* CSS Mask Approach */}
-        <div 
-          className="w-full h-full bg-black flex items-center justify-center"
-          style={{
-            WebkitMaskImage: "url('/assets/umbrella-exact.png')",
-            maskImage: "url('/assets/umbrella-exact.png')",
-            WebkitMaskSize: "contain",
-            maskSize: "contain",
-            WebkitMaskPosition: "center",
-            maskPosition: "center",
-            WebkitMaskRepeat: "no-repeat",
-            maskRepeat: "no-repeat"
-          }}
-        >
-           <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover grayscale opacity-90"
-           >
-             <source src="/antigravity_assets/hero_video.mp4" type="video/mp4" />
-           </video>
-        </div>
-      </div>
+      {/* Umbrella image block */}
+      <img src="/assets/umbrella-exact.png"
+           alt="Umbrella Reference"
+           style={{ width: "280px", height: "auto", display: "block", margin: "0 auto 64px auto", position: "static" }} 
+      />
 
       {/* Contact Form */}
-      <div className="w-full max-w-[300px] flex flex-col gap-6">
+      <div style={{ width: "280px", display: "flex", flexDirection: "column", gap: "24px" }}>
          
-         <div className="flex flex-col gap-2">
-            <label className="text-[10px] uppercase font-sans font-bold tracking-widest text-black/50 ml-4">
+         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <label style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#888", letterSpacing: "0.1em" }}>
                Email
             </label>
             <input 
-              type="email" 
+              type="text" 
               placeholder="iblackdrop@trymore.com"
-              className="w-full px-6 py-4 rounded-full border border-black text-[13px] bg-transparent outline-none placeholder:text-black/30 font-sans"
+              onFocus={() => setFocusEmail(true)}
+              onBlur={() => setFocusEmail(false)}
+              style={{
+                border: `1px solid ${focusEmail ? "#000" : "#d0d0d0"}`,
+                borderRadius: "999px",
+                padding: "10px 20px",
+                width: "280px",
+                fontFamily: "var(--font-body)",
+                fontSize: "14px",
+                outline: "none",
+                background: "transparent",
+                color: "#000"
+              }}
+              className="placeholder-[#bbb]"
             />
          </div>
 
-         <div className="flex flex-col gap-2">
-            <label className="text-[10px] uppercase font-sans font-bold tracking-widest text-black/50 ml-4">
+         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <label style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#888", letterSpacing: "0.1em" }}>
                Number
             </label>
             <input 
-              type="tel" 
+              type="text" 
               placeholder="0500000000"
-              className="w-full px-6 py-4 rounded-full border border-black text-[13px] bg-transparent outline-none placeholder:text-black/30 font-sans"
+              onFocus={() => setFocusNumber(true)}
+              onBlur={() => setFocusNumber(false)}
+              style={{
+                border: `1px solid ${focusNumber ? "#000" : "#d0d0d0"}`,
+                borderRadius: "999px",
+                padding: "10px 20px",
+                width: "280px",
+                fontFamily: "var(--font-body)",
+                fontSize: "14px",
+                outline: "none",
+                background: "transparent",
+                color: "#000"
+              }}
+              className="placeholder-[#bbb]"
             />
          </div>
 
-         <div className="w-full flex justify-end mt-2 pr-4">
-            <button className="text-[12px] font-sans font-bold hover:opacity-50 transition-opacity">
+         <div style={{ width: "100%", display: "flex", justifyContent: "flex-end", marginTop: "4px" }}>
+            <button 
+              style={{ fontFamily: "var(--font-body)", fontSize: "12px", cursor: "pointer", background: "none", border: "none", padding: 0, color: "#000" }}
+              className="hover:opacity-50 transition-opacity"
+            >
                Send &rarr;
             </button>
          </div>
