@@ -11,58 +11,88 @@ export default function UmbrellaSection() {
       style={{
         width: "100vw",
         height: "100vh",
-        overflow: "hidden",
         background: "#ffffff",
+        position: "relative",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        gap: "64px",
-        padding: "80px 0",
-        boxSizing: "border-box",
-        position: "relative",
+        gap: "56px",
+        overflow: "hidden",
       }}
     >
-      {/* SPINNING CUP VIDEO — replaces static umbrella */}
-      <video
-        src="/antigravity_assets/hero_video.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
+      {/* UMBRELLA — full-section background, faded */}
+      <img
+        src="/assets/umbrella-exact.png"
+        alt=""
         style={{
-          height: "340px",
-          width: "auto",
-          display: "block",
-          animation: "spinCupY 6s linear infinite",
-          transformOrigin: "center center",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -56%)",
+          width: "520px",
+          height: "auto",
+          opacity: 0.09,
+          pointerEvents: "none",
+          zIndex: 0,
         }}
       />
+
+      {/* SPINNING CUP VIDEO — square crop, centered */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          width: "260px",
+          height: "260px",
+          overflow: "hidden",
+          borderRadius: 0,
+        }}
+      >
+        <video
+          src="/antigravity_assets/hero_video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            height: "340px",
+            width: "auto",
+            animation: "slowSpin 14s linear infinite",
+          }}
+        />
+      </div>
 
       {/* CONTACT FORM */}
       <div
         style={{
+          position: "relative",
+          zIndex: 1,
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
-          gap: "18px",
+          gap: "16px",
         }}
       >
         {/* Email */}
-        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-          <span
+        <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
+          <label
             style={{
-              fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontSize: "13px",
               fontWeight: 400,
-              letterSpacing: "0.12em",
-              color: "#999",
-              width: "60px",
+              letterSpacing: "0.18em",
+              color: "#888888",
+              width: "64px",
               textAlign: "right",
+              textTransform: "uppercase",
             }}
           >
             Email
-          </span>
+          </label>
           <input
             type="email"
             placeholder="iblackdrop@trymore.com"
@@ -70,34 +100,37 @@ export default function UmbrellaSection() {
             onBlur={() => setEmailFocus(false)}
             style={{
               width: "300px",
-              padding: "13px 24px",
-              border: `1px solid ${emailFocus ? "#000" : "#cccccc"}`,
+              padding: "13px 22px",
+              border: `1px solid ${emailFocus ? "#000000" : "#d8d8d8"}`,
               borderRadius: "999px",
-              fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-              fontSize: "15px",
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: "16px",
+              fontWeight: 400,
               color: "#1a1a1a",
-              background: "#fff",
+              background: "#ffffff",
               outline: "none",
+              letterSpacing: "0.04em",
               transition: "border-color 200ms",
             }}
           />
         </div>
 
         {/* Number */}
-        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-          <span
+        <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
+          <label
             style={{
-              fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontSize: "13px",
               fontWeight: 400,
-              letterSpacing: "0.12em",
-              color: "#999",
-              width: "60px",
+              letterSpacing: "0.18em",
+              color: "#888888",
+              width: "64px",
               textAlign: "right",
+              textTransform: "uppercase",
             }}
           >
             Number
-          </span>
+          </label>
           <input
             type="tel"
             placeholder="0500000000"
@@ -105,14 +138,16 @@ export default function UmbrellaSection() {
             onBlur={() => setNumFocus(false)}
             style={{
               width: "300px",
-              padding: "13px 24px",
-              border: `1px solid ${numFocus ? "#000" : "#cccccc"}`,
+              padding: "13px 22px",
+              border: `1px solid ${numFocus ? "#000000" : "#d8d8d8"}`,
               borderRadius: "999px",
-              fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-              fontSize: "15px",
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: "16px",
+              fontWeight: 400,
               color: "#1a1a1a",
-              background: "#fff",
+              background: "#ffffff",
               outline: "none",
+              letterSpacing: "0.04em",
               transition: "border-color 200ms",
             }}
           />

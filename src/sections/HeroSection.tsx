@@ -13,14 +13,14 @@ export default function HeroSection() {
         overflow: "hidden",
       }}
     >
-      {/* LOGO — top-left */}
+      {/* LOGO — top-left, Helvetica Neue */}
       <div
         style={{
           fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-          fontSize: "18px",
+          fontSize: "17px",
           fontWeight: 700,
-          lineHeight: 1.2,
-          letterSpacing: "0.1em",
+          lineHeight: 1.25,
+          letterSpacing: "0.12em",
           textTransform: "uppercase",
           color: "#ffffff",
           mixBlendMode: "difference",
@@ -35,7 +35,7 @@ export default function HeroSection() {
         BLACK<br />DROP<br />COFFEE
       </div>
 
-      {/* HERO VIDEO — centered, no animation, no transform */}
+      {/* HERO VIDEO — centered, no animation */}
       <div
         style={{
           position: "absolute",
@@ -67,7 +67,7 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* FOOTER NAV — text only, no video, two columns */}
+      {/* FOOTER NAV — text only, two columns */}
       <div
         style={{
           position: "absolute",
@@ -82,17 +82,16 @@ export default function HeroSection() {
           zIndex: 10,
         }}
       >
-        {/* Left — EN */}
+        {/* Left — EN, Helvetica Neue 300 */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 0,
             fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-            fontSize: "13px",
-            fontWeight: 400,
-            letterSpacing: "0.08em",
-            lineHeight: 2.2,
+            fontSize: "12px",
+            fontWeight: 300,
+            letterSpacing: "0.1em",
+            lineHeight: 2.4,
             color: "#ffffff",
             mixBlendMode: "difference",
           }}
@@ -110,18 +109,17 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right — AR */}
+        {/* Right — AR, Tajawal 300 */}
         <div
           dir="rtl"
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 0,
             fontFamily: "'Tajawal', sans-serif",
-            fontSize: "13px",
-            fontWeight: 400,
-            letterSpacing: "0.04em",
-            lineHeight: 2.2,
+            fontSize: "12px",
+            fontWeight: 300,
+            letterSpacing: "0.1em",
+            lineHeight: 2.4,
             color: "#ffffff",
             mixBlendMode: "difference",
             textAlign: "right",

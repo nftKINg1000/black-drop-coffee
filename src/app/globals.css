@@ -4,6 +4,7 @@
   :root {
     --font-en: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-ar: 'Tajawal', sans-serif;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
   }
 
   *, *::before, *::after {
@@ -29,9 +30,9 @@
   }
 }
 
-@keyframes spinCupY {
-  0%   { transform: perspective(600px) rotateY(0deg); }
-  100% { transform: perspective(600px) rotateY(360deg); }
+@keyframes slowSpin {
+  0%   { transform: translate(-50%, -50%) perspective(600px) rotateY(0deg); }
+  100% { transform: translate(-50%, -50%) perspective(600px) rotateY(360deg); }
 }
 
 @keyframes footerSpin {
@@ -41,4 +42,5 @@
 
 input:focus {
   border-color: #000000 !important;
+  outline: none !important;
 }
