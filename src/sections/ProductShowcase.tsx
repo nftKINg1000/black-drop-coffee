@@ -7,17 +7,17 @@ const SLIDES = [
   {
     id: 1,
     image: "/assets/coffee-bag-exact.png",
-    enLine1: <>Colombia with <strong>lychee</strong> notes.</>,
+    enLine1: (<>Colombia with <strong>lychee</strong> notes.</>),
     enLine2: "Soft balance. Clean taste.",
-    arLine1: <>كولومبيا بنفحات <strong>ليتشي</strong></>,
+    arLine1: (<>كولومبيا بنفحات <strong>ليتشي</strong></>),
     arLine2: "توازن ناعم. مذاق نظيف",
   },
   {
     id: 2,
     image: "/assets/coffee-bag-exact.png",
-    enLine1: <>Ethiopia with <strong>jasmine</strong> notes.</>,
+    enLine1: (<>Ethiopia with <strong>jasmine</strong> notes.</>),
     enLine2: "Bright acidity. Floral finish.",
-    arLine1: <>إثيوبيا بنفحات <strong>ياسمين</strong></>,
+    arLine1: (<>إثيوبيا بنفحات <strong>ياسمين</strong></>),
     arLine2: "حموضة مشرقة. نهاية مذهلة",
   },
 ];
@@ -109,24 +109,24 @@ export default function ProductShowcase() {
         </AnimatePresence>
       </div>
 
-      {/* Caption bottom-left (EN) */}
+      {/* Caption bottom-left (EN) — 15px */}
       <div
         style={{
           position: "absolute",
           bottom: "32px",
           left: "48px",
           fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-          fontSize: "12px",
+          fontSize: "15px",
           fontWeight: 300,
           color: "#1a1a1a",
-          lineHeight: 1.7,
+          lineHeight: 1.8,
         }}
       >
         <div>{slide.enLine1}</div>
         <div>{slide.enLine2}</div>
       </div>
 
-      {/* Caption bottom-right (AR) */}
+      {/* Caption bottom-right (AR) — 15px Tajawal */}
       <div
         dir="rtl"
         style={{
@@ -134,10 +134,10 @@ export default function ProductShowcase() {
           bottom: "32px",
           right: "48px",
           fontFamily: "'Tajawal', sans-serif",
-          fontSize: "12px",
+          fontSize: "15px",
           fontWeight: 300,
           color: "#1a1a1a",
-          lineHeight: 1.7,
+          lineHeight: 1.8,
           textAlign: "right",
         }}
       >

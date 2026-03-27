@@ -17,10 +17,10 @@ export default function HeroSection() {
       <div
         style={{
           fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-          fontSize: "14px",
+          fontSize: "17px",
           fontWeight: 700,
-          lineHeight: 1.2,
-          letterSpacing: "0.08em",
+          lineHeight: 1.25,
+          letterSpacing: "0.1em",
           textTransform: "uppercase",
           color: "#ffffff",
           mixBlendMode: "difference",
@@ -35,7 +35,7 @@ export default function HeroSection() {
         BLACK<br />DROP<br />COFFEE
       </div>
 
-      {/* B. CUP VIDEO — centered, gently rocks */}
+      {/* B. CUP VIDEO — centered, NO animation, NO transform */}
       <div
         style={{
           position: "absolute",
@@ -60,12 +60,15 @@ export default function HeroSection() {
             height: "80vh",
             width: "auto",
             objectFit: "contain",
-            animation: "cupRock 8s ease-in-out infinite",
+            display: "block",
+            position: "static",
+            transform: "none",
+            animation: "none",
           }}
         />
       </div>
 
-      {/* C. FOOTER NAV */}
+      {/* C. FOOTER NAV — 3 columns: EN | SPINNING CUP | AR */}
       <div
         style={{
           position: "absolute",
@@ -86,14 +89,13 @@ export default function HeroSection() {
         <div
           style={{
             fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-            fontSize: "11px",
+            fontSize: "13px",
             fontWeight: 400,
-            letterSpacing: "0.07em",
+            letterSpacing: "0.08em",
             color: "#ffffff",
-            lineHeight: 2,
+            lineHeight: 2.2,
             display: "flex",
             flexDirection: "column",
-            gap: 0,
           }}
         >
           <div style={{ display: "flex", gap: "20px" }}>
@@ -109,20 +111,44 @@ export default function HeroSection() {
           </div>
         </div>
 
+        {/* Center – Spinning cup */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-end",
+            justifyContent: "center",
+            flex: "0 0 auto",
+          }}
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            src="/antigravity_assets/hero_video.mp4"
+            style={{
+              height: "72px",
+              width: "auto",
+              display: "block",
+              animation: "footerSpin 6s linear infinite",
+              transformOrigin: "center center",
+            }}
+          />
+        </div>
+
         {/* Right – AR */}
         <div
           dir="rtl"
           style={{
             fontFamily: "'Tajawal', sans-serif",
-            fontSize: "11px",
+            fontSize: "13px",
             fontWeight: 400,
-            letterSpacing: "0.07em",
+            letterSpacing: "0.08em",
             color: "#ffffff",
-            lineHeight: 2,
+            lineHeight: 2.2,
             textAlign: "right",
             display: "flex",
             flexDirection: "column",
-            gap: 0,
           }}
         >
           <div style={{ display: "flex", gap: "20px" }}>

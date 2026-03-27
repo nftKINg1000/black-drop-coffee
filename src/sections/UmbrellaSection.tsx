@@ -21,7 +21,7 @@ export default function UmbrellaSection() {
         boxSizing: "border-box",
       }}
     >
-      {/* UMBRELLA IMAGE — upright, static, centered */}
+      {/* UMBRELLA IMAGE */}
       <img
         src="/assets/umbrella-exact.png"
         alt=""
@@ -49,11 +49,11 @@ export default function UmbrellaSection() {
           <span
             style={{
               fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-              fontSize: "11px",
+              fontSize: "13px",
               fontWeight: 400,
-              letterSpacing: "0.1em",
+              letterSpacing: "0.12em",
               color: "#999999",
-              width: "56px",
+              width: "60px",
               textAlign: "right",
             }}
           >
@@ -66,11 +66,11 @@ export default function UmbrellaSection() {
             onBlur={() => setEmailFocus(false)}
             style={{
               width: "280px",
-              padding: "11px 22px",
+              padding: "13px 24px",
               border: `1px solid ${emailFocus ? "#000000" : "#cccccc"}`,
               borderRadius: "999px",
               fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-              fontSize: "13px",
+              fontSize: "15px",
               color: "#1a1a1a",
               background: "#ffffff",
               outline: "none",
@@ -84,11 +84,11 @@ export default function UmbrellaSection() {
           <span
             style={{
               fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-              fontSize: "11px",
+              fontSize: "13px",
               fontWeight: 400,
-              letterSpacing: "0.1em",
+              letterSpacing: "0.12em",
               color: "#999999",
-              width: "56px",
+              width: "60px",
               textAlign: "right",
             }}
           >
@@ -101,11 +101,11 @@ export default function UmbrellaSection() {
             onBlur={() => setNumFocus(false)}
             style={{
               width: "280px",
-              padding: "11px 22px",
+              padding: "13px 24px",
               border: `1px solid ${numFocus ? "#000000" : "#cccccc"}`,
               borderRadius: "999px",
               fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-              fontSize: "13px",
+              fontSize: "15px",
               color: "#1a1a1a",
               background: "#ffffff",
               outline: "none",
